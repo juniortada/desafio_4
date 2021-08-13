@@ -1,6 +1,6 @@
 <h1>Weather for <%= @weather.city %></h1>
 
-<h2><%= @weather.temperature %>&ordm;F</h2>
+<h2><%= @weather.temperature %>&ordm;F | <%= @weather_celsius.temperature(@weather.temperature) %>&ordm;C</h2>
 
 <table>
   <tbody>
@@ -14,11 +14,11 @@
     </tr>
     <tr>
       <td>Min Temperature</td>
-      <td><%= @weather.min_temperature %>&ordm;F</td>
+      <td><%= @weather.min_temperature %>&ordm;F | <%= @weather_celsius.temperature(@weather.min_temperature) %>&ordm;C</td>
     </tr>
     <tr>
       <td>Max Temperature</td>
-      <td><%= @weather.max_temperature %>&ordm;F</td>
+      <td><%= @weather.max_temperature %>&ordm;F | <%= @weather_celsius.temperature(@weather.max_temperature) %>&ordm;C</td>
     </tr>
     <tr>
       <td>Wind Speed</td>
