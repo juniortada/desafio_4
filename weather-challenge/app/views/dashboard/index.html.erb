@@ -1,28 +1,49 @@
-<h1>Weather for <%= @weather.city %></h1>
+<div class="container">
+  <div class="text-center">
+    <h1>Weather for <%= @weather.city %></h1>
 
-<h2><%= @weather.temperature %>&ordm;F | <%= @weather_celsius.temperature(@weather.temperature) %>&ordm;C</h2>
+    <h2><%= @weather.temperature %>&ordm;F | <%= @weather_celsius.temperature(@weather.temperature) %>&ordm;C</h2>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Pressure</td>
-      <td><%= @weather.pressure %>hpa</td>
-    </tr>
-    <tr>
-      <td>Humidity</td>
-      <td><%= @weather.humidity %>%</td>
-    </tr>
-    <tr>
-      <td>Min Temperature</td>
-      <td><%= @weather.min_temperature %>&ordm;F | <%= @weather_celsius.temperature(@weather.min_temperature) %>&ordm;C</td>
-    </tr>
-    <tr>
-      <td>Max Temperature</td>
-      <td><%= @weather.max_temperature %>&ordm;F | <%= @weather_celsius.temperature(@weather.max_temperature) %>&ordm;C</td>
-    </tr>
-    <tr>
-      <td>Wind Speed</td>
-      <td><%= @weather.wind_speed %>mi/h</td>
-    </tr>
-  </tbody>
-</table>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-6">
+        <table class="table table-sm">
+          <tbody>
+            <tr>
+              <td>Pressure</td>
+              <td><%= @weather.pressure %>hpa</td>
+            </tr>
+            <tr>
+              <td>Humidity</td>
+              <td><%= @weather.humidity %>%</td>
+            </tr>
+            <tr>
+              <td>Min Temperature</td>
+              <td><%= @weather.min_temperature %>&ordm;F | <%= @weather_celsius.temperature(@weather.min_temperature) %>&ordm;C</td>
+            </tr>
+            <tr>
+              <td>Max Temperature</td>
+              <td><%= @weather.max_temperature %>&ordm;F | <%= @weather_celsius.temperature(@weather.max_temperature) %>&ordm;C</td>
+            </tr>
+            <tr>
+              <td>Wind Speed</td>
+              <td><%= @weather.wind_speed %>mi/h</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col"></div>
+  </div>
+
+  <form class="needs-validation" novalidade>
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label text-end">City</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" required>
+          <div class="invalid-feedback">Please provide a valid city.</div>
+        </div>
+        <div class="col-sm-2 text-start"><button type="submit" class="btn btn-primary">Search</button></div>  
+      </div>
+  </form>
+
+</div>
