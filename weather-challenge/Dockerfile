@@ -9,7 +9,6 @@ ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
 
 RUN gem install bundler
-RUN bundle update mimemagic
 RUN bundle install
 RUN gem install bundler-audit
 
