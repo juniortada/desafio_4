@@ -35,15 +35,26 @@
       <div class="col"></div>
   </div>
 
-  <form class="needs-validation" novalidade>
+  <!--
+     <div>
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>" role="alert">
+              <%= value %>
+        </div>
+      <% end %>
+   </div -->
+
+  <%= form_with( html: {class: "needs-validation", novalidade: ""}) do |form| %>
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label text-end">City</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" required>
+          <%= form.text_field :city, class: "form-control" %>
           <div class="invalid-feedback">Please provide a valid city.</div>
         </div>
-        <div class="col-sm-2 text-start"><button type="submit" class="btn btn-primary">Search</button></div>  
+        <div class="col-sm-2 text-start">
+          <%= form.submit "Search", class: "btn btn-primary" %>
+        </div>  
       </div>
-  </form>
+  <% end %>
 
 </div>
