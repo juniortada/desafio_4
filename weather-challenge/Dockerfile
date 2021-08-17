@@ -1,6 +1,6 @@
 FROM ruby:2.6.3
 
-RUN apt-get update -qq
+RUN apt update -qq && apt install build-essential
 
 RUN mkdir -p /weather-challenge
 
