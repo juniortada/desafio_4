@@ -1,5 +1,4 @@
 class DashboardController < ApplicationController
-
   def index
     # temperature in celsius
     @weather_celsius = WeatherCelsius.new
@@ -7,11 +6,12 @@ class DashboardController < ApplicationController
     @cities = FavoriteCity.all
     begin
       # inline if city search or gem geocoder
-      request.post? ? city = params[:city] : city = request.location.city
+      city = request.post? ? params[:city] : request.location.city
       raise StandardError if city.empty?
+
       @weather = ApiHelper.get_weather(city)
       save_favorite_city(@weather.city)
-    rescue
+    rescue StandardError
       # error, default city
       @weather = ApiHelper.get_weather('Sao Paulo')
     ensure
@@ -20,8 +20,6 @@ class DashboardController < ApplicationController
   end
 
   def save_favorite_city(city)
-    if !FavoriteCity.exists?(name: city)
-      FavoriteCity.create(name: city)
-    end
+    FavoriteCity.create(name: city) unless FavoriteCity.exists?(name: city)
   end
 end
