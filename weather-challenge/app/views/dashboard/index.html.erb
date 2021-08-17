@@ -44,11 +44,11 @@
       <% end %>
    </div -->
 
-  <%= form_with( html: {class: "needs-validation", novalidade: ""}) do |form| %>
+  <%= form_with( html: {id: "search_form", class: "needs-validation", novalidade: ""}) do |form| %>
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label text-end">City</label>
         <div class="col-sm-6">
-          <%= form.text_field :city, class: "form-control" %>
+          <%= form.text_field :city, class: "form-control", required: "" %>
           <div class="invalid-feedback">Please provide a valid city.</div>
         </div>
         <div class="col-sm-2 text-start">
@@ -56,5 +56,31 @@
         </div>  
       </div>
   <% end %>
+
+  <h3>Favorite Cities</h3>
+  <br>
+
+  <div class="row">
+      <div class="col"></div>
+      <div class="col-6">
+        <table class="table table-sm table-hover">
+          <tbody>
+            <% if !@cities.empty? %>
+              <% @cities.each do |city| %>
+                <tr onclick="select_city('<%= city.name %>')">
+                  <td><%= city.name %></td>
+                  <td><%= city.created_at %></td>
+                </tr>
+              <% end %>
+            <% else %>
+              <tr>
+                <td>No City Found</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col"></div>
+  </div>
 
 </div>
